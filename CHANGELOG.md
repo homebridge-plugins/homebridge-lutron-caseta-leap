@@ -2,6 +2,13 @@
 
 All notable changes to `homebridge` will be documented in this file. This project tries to adhere to [Semantic Versioning](http://semver.org/).
 
+## v2.7.0 (2025-XX-XX)
+
+### What’s Changed
+
+* Convert to ESmodule
+* Update dependencies
+
 ## v2.6.0 (2024-07-04)
 
 ### What’s Changed

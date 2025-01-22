@@ -1,8 +1,9 @@
-import { API } from 'homebridge';
+import type { API } from 'homebridge'
 
-import { PLATFORM_NAME } from './settings';
-import { LutronCasetaLeap } from './platform';
+import { LutronCasetaLeap } from './platform.js'
+import { PLATFORM_NAME, PLUGIN_NAME } from './settings.js'
 
-export = (api: API) => {
-    api.registerPlatform(PLATFORM_NAME, LutronCasetaLeap);
-};
+// Register our platform with homebridge.
+export default (api: API): void => {
+  api.registerPlatform(PLUGIN_NAME, PLATFORM_NAME, LutronCasetaLeap)
+}
