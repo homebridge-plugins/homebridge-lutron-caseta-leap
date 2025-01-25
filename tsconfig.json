@@ -1,21 +1,29 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
+    "target": "ES2022",
     "lib": [
-      "es2020"
+      "DOM",
+      "ES2022"
     ],
+    "rootDir": "src",
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "paths": {
+      // workaround for: https://github.com/vitest-dev/vitest/issues/4567
+      "rollup/parseAst": ["./node_modules/rollup/dist/parseAst"]
+    },
+    "strict": true,
+    "noImplicitAny": false,
     "declaration": true,
     "declarationMap": true,
+    "outDir": "dist",
     "sourceMap": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "noImplicitAny": false
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "src/"
+    "src"
   ],
   "exclude": [
     "**/*.spec.ts"

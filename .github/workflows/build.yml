@@ -1,32 +1,18 @@
-name: Build and Lint
+name: Node Build
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [latest]
+  pull_request:
+  workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        # the Node.js versions to build on
-        # 16.x is required by Homebridge: https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-macOS
-        node-version: [18, 20]
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Lint the project
-        run: npm run lint
-
-      - name: Build the project
-        run: npm run build
-        env:
-          CI: true
+  build_and_test:
+    uses: homebridge/.github/.github/workflows/nodejs-build-and-test.yml@latest
+    with:
+      enable_coverage: false
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+  lint:
+    needs: build_and_test
+    uses: homebridge/.github/.github/workflows/eslint.yml@latest

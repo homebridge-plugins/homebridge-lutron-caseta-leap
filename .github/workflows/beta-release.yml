@@ -1,8 +1,9 @@
-name: Release
+name: Beta Release
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [beta-*.*.*, beta]
+  workflow_dispatch:
 
 jobs:
   build_and_test:
@@ -11,15 +12,34 @@ jobs:
       enable_coverage: false
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
+  lint:
+    needs: build_and_test
+    uses: homebridge/.github/.github/workflows/eslint.yml@latest
 
   publish:
-    needs: build_and_test
+    needs: lint
     if: ${{ github.repository == 'homebridge-plugins/homebridge-lutron-caseta-leap' }}
     permissions:
       id-token: write
     uses: homebridge/.github/.github/workflows/npm-publish-esm.yml@latest
+    with:
+      tag: 'beta'
+      dynamically_adjust_version: true
+      npm_version_command: 'pre'
+      pre_id: 'beta'
     secrets:
       npm_auth_token: ${{ secrets.npm_token }}
+
+  pre-release:
+    needs: publish
+    if: ${{ github.repository == 'homebridge-plugins/homebridge-lutron-caseta-leap' }}
+    uses: homebridge/.github/.github/workflows/pre-release.yml@latest
+    with:
+      npm_version: ${{ needs.publish.outputs.NPM_VERSION }}
+      body: |
+        **Beta Release**
+        **Version**: v${{ needs.publish.outputs.NPM_VERSION }}
+        [How To Test Beta Releases](https://github.com/homebridge-plugins/homebridge-lutron-caseta-leap/wiki/Beta-Version)
 
   github-releases-to-discord:
     name: Discord Webhooks
@@ -27,9 +47,9 @@ jobs:
     if: ${{ github.repository == 'homebridge-plugins/homebridge-lutron-caseta-leap' }}
     uses: homebridge/.github/.github/workflows/discord-webhooks.yml@latest
     with:
-      title: "Lutron Release"
+      title: "Lutron Beta Release"
       description: |
         Version `v${{ needs.publish.outputs.NPM_VERSION }}`
       url: "https://github.com/homebridge-plugins/homebridge-lutron-caseta-leap/releases/tag/v${{ needs.publish.outputs.NPM_VERSION }}"
     secrets:
-      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL_LATEST }}
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL_BETA || secrets.DISCORD_WEBHOOK_URL_LATEST }}
