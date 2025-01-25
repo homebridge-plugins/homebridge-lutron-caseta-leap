@@ -8,7 +8,7 @@
 <a href="https://www.npmjs.com/package/@homebridge-plugins/homebridge-lutron-caseta-leap"><img title="npm downloads" src="https://badgen.net/npm/dt/@homebridge-plugins/homebridge-lutron-caseta-leap?label=downloads" ></a>
 <a href="https://discord.gg/8fpZA4S"><img title="discord-lutron" src="https://badgen.net/discord/online-members/8fpZA4S?icon=discord&label=discord" ></a>
 <a href="https://paypal.me/donavanbecker"><img title="donate" src="https://badgen.net/badge/donate/paypal/yellow" ></a>
-<a href="(https://github.com/homebridge/homebridge/wiki/Verified-Plugins"><img title="donate" src="https://badgen.net/badge/homebridge/scoped/purple" ></a>
+<a href="https://github.com/homebridge/homebridge/wiki/Verified-Plugins"><img title="donate" src="https://badgen.net/badge/homebridge/scoped/purple" ></a>
 
 </p>
 
