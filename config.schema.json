@@ -3,6 +3,7 @@
   "pluginType": "platform",
   "customUi": true,
   "singular": true,
+  "customUiPath": "./dist/homebridge-ui",
   "schema": {
     "type": "object",
     "properties": {
@@ -51,7 +52,8 @@
     }
   },
   "layout": [
-    {"key": "options",
+    {
+      "key": "options",
       "type": "div",
       "displayFlex": true,
       "items": [
@@ -74,11 +76,13 @@
           "flex": "1 1 150px"
         }
       ]
+
     },
-    {"key": "secrets",
+    {
+      "key": "secrets",
       "type": "array",
       "listItems": 1,
-      "items": [ {
+      "items": [{
         "type": "div",
         "displayFlex": true,
         "items": [
@@ -114,6 +118,7 @@
         ]
       }
       ]
+
     }
   ]
 

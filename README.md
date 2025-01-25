@@ -95,7 +95,7 @@ This plugin doesn't often change, but when I add big features or make big change
 
 ### Something weird is happening / The plugin is running slowly / Devices aren't appearing
 
-If the plugin is generally misbehaving, users have reported success in running this plugin in a [child bridge](https://github.com/homebridge/homebridge/wiki/Child-Bridges). Doing this will require adding the bridge as a separate device and re-configuring your devices, which may or may not be acceptable. [This issue](https://github.com/thenewwazoo/homebridge-lutron-caseta-leap/issues/96) has some steps to accomplishing that.
+If the plugin is generally misbehaving, users have reported success in running this plugin in a [child bridge](https://github.com/homebridge/homebridge/wiki/Child-Bridges). Doing this will require adding the bridge as a separate device and re-configuring your devices, which may or may not be acceptable. [This issue](https://github.com/homebridge-plugins/homebridge-lutron-caseta-leap/issues/96) has some steps to accomplishing that.
 
 Why does this change things? To be honest, I don't really know (and not knowing really bugs me). I've tried my best to follow best practices in designing this plugin but it seems to help sometimes. :(
 
