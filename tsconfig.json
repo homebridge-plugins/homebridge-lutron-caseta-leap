@@ -7,11 +7,7 @@
     ],
     "rootDir": "src",
     "module": "ES2022",
-    "moduleResolution": "node",
-    "paths": {
-      // workaround for: https://github.com/vitest-dev/vitest/issues/4567
-      "rollup/parseAst": ["./node_modules/rollup/dist/parseAst"]
-    },
+    "moduleResolution": "bundler",
     "strict": true,
     "noImplicitAny": false,
     "declaration": true,
